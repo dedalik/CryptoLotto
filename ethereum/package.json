@@ -1,5 +1,5 @@
 {
-  "name": "LotteryContract",
+  "name": "CryptoLottoBackend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "test": "mocha"
   },
   "author": "John Crisostomo",
-  "repository": "https://github.com/johncrisostomo/Lottery-Contract.git",
+  "repository": "https://github.com/johncrisostomo/CryptoLotto.git",
   "license": "MIT",
   "dependencies": {
     "ganache-cli": "^6.1.0",

@@ -20,7 +20,7 @@ contract Lottery {
         return uint(keccak256(block.difficulty, now, players));
     }
     
-    function pickWinnder() public restrictedToManager {
+    function pickWinner() public restrictedToManager {
         uint index = random() % players.length;
         players[index].transfer(address(this).balance);
         

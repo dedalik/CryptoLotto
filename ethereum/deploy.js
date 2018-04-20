@@ -5,12 +5,9 @@ const { interface, bytecode } = require('./compile');
 const { accountMnemonic, infuraApiKey } = require('./settings.json');
 
 const network = 'rinkeby';
-const INFURA_API_URI = `https://${network}.infura.io/${infuraApiKey}`
+const INFURA_API_URI = `https://${network}.infura.io/${infuraApiKey}`;
 
-const provider = new HDWalletProvider(
-    accountMnemonic,
-    INFURA_API_URI
-);
+const provider = new HDWalletProvider(accountMnemonic, INFURA_API_URI);
 
 const web3 = new Web3(provider);
 
@@ -23,7 +20,9 @@ const deploy = async () => {
         .deploy({ data: bytecode })
         .send({ gas: '1000000', from: accounts[0] });
 
-    result.setProvider(provider); 
+    result.setProvider(provider);
+
+    console.log(interface);
 
     console.log(`Contract address is ${result.options.address}`);
 };

@@ -6,7 +6,8 @@ class App extends Component {
     state = {
         manager: '',
         balance: '',
-        players: []
+        players: [],
+        value: ''
     };
 
     async componentDidMount() {
@@ -27,9 +28,25 @@ class App extends Component {
                 </p>
                 <p>Players: {this.state.players.length}</p>
                 <p>
-                    Jackpot: {web3.utils.fromWei(this.state.balance, 'ether')}
+                    Jackpot: {web3.utils.fromWei(this.state.balance, 'ether')}{' '}
                     ether
                 </p>
+
+                <hr />
+
+                <form>
+                    <h4>Want to join?</h4>
+                    <div>
+                        <label>Amount of ether : </label>
+                        <input
+                            value={this.state.value}
+                            onChange={event =>
+                                this.setState({ value: event.target.value })
+                            }
+                        />
+                    </div>
+                    <button>Enter</button>
+                </form>
             </div>
         );
     }

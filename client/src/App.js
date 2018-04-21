@@ -4,13 +4,17 @@ import lottery from './lottery';
 
 class App extends Component {
     state = {
-        manager: ''
+        manager: '',
+        balance: '',
+        players: []
     };
 
     async componentDidMount() {
         const manager = await lottery.methods.manager().call();
+        const players = await lottery.methods.getPlayers().call();
+        const balance = await web3.eth.getBalance(lottery.options.address);
 
-        this.setState({ manager });
+        this.setState({ manager, players, balance });
     }
 
     render() {
@@ -20,6 +24,11 @@ class App extends Component {
                 <p>
                     Game is currently managed by{' '}
                     <code>{this.state.manager}</code>
+                </p>
+                <p>Players: {this.state.players.length}</p>
+                <p>
+                    Jackpot: {web3.utils.fromWei(this.state.balance, 'ether')}
+                    ether
                 </p>
             </div>
         );
